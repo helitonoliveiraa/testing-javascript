@@ -5,11 +5,12 @@ const keyValueToString = item => {
   return item.join('=');
 };
 
-module.exports.queryString = obj =>
-  Object.entries(obj).map(keyValueToString).join('&');
+export function queryString(obj) {
+  return Object.entries(obj).map(keyValueToString).join('&');
+}
 
-module.exports.parse = qs =>
-  Object.fromEntries(
+export function parse(qs) {
+  return Object.fromEntries(
     qs.split('&').map(item => {
       let [key, value] = item.split('=');
 
@@ -20,3 +21,4 @@ module.exports.parse = qs =>
       return [key, value];
     }),
   );
+}
